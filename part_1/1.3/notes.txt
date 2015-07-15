@@ -1,0 +1,79 @@
+the STANDARD LIBRARY is the extensions which come with ruby as standard. There are a lot of them and are for a wide veriety of purposes.
+
+-----------------------------------------------------------------------------------------------------
+
+Using extensions and libraries need the "require" method and knowing its relation to "load" is also needed.
+Think of YAML from learn to program 12 i think of chris pine Learn to Program V2.
+-----------------------------------------------------------------------------------------------------
+
+Using the following will display the folders that LOAD and REQUIRE will search for files called upon
+
+	ruby -e "puts $:"
+
+The global variable $: is the paths ruby searches, the -e just tells ruby to run the next part as ruby code instead of looking for a file.
+
+-----------------------------------------------------------------------------------------------------
+
+LOAD
+
+-----------------------------------------------------------------------------------------------------
+
+to simply load a file from the same directory the code running it is in uses the following
+
+	load "x"
+
+This will load file "x" in the current directory
+
+-----------------------------------------------------------------------------------------------------
+
+Using the following will allow different thing to happen
+
+	load "../x"
+
+As seen above you can change directory for file "x" using the same commands as you would use in the command line e.g use ../.. to go up 2 directories, use ~/ to go back to current user documents, or the full pwd of file "x" for more permenant file calls.
+
+-----------------------------------------------------------------------------------------------------
+
+REQUIRE
+
+-----------------------------------------------------------------------------------------------------
+
+Require differs from Load because where load uses the file once whereas require will keep the file on hand. You activate it using the following
+
+	require "./x"
+
+You need the ./ for this as the current directory was removed from the LOAD_PATH for require in version 1.9 apparently. 
+
+-----------------------------------------------------------------------------------------------------
+
+Or the following could be used instead to not need the file location as long as it is in the current directory.
+
+	require_relative "x"
+
+-----------------------------------------------------------------------------------------------------
+
+The file type ".rb" is not needed in require
+
+Full directory locations can be used in the same way as LOAD.
+
+-----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

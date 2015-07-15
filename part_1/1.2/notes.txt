@@ -1,0 +1,46 @@
+The following allows your to check what 
+
+	irb --simple-prompt -rrbconfig
+
+-r tells irb to load the rbconfig interface, while --simple-prompt defines how it looks
+
+-----------------------------------------------------------------------------------------------------
+
+After using the above the following can be used 
+
+	Config::CONFIG["x"]			
+	The version on my Laptop prefers RbConfig::CONFIG it yells at me whe I just use Config :'(
+
+This will give the location of the directory for hash key "x" examples below
+
+-----------------------------------------------------------------------------------------------------
+
+	RbConfig::CONFIG["bindir"]
+
+This shows the location of the bin (binary file apparently) folder ruby uses (this is what is in PATH)
+
+-----------------------------------------------------------------------------------------------------
+
+	RbConfig::CONFIG["rubylibdir"]
+
+This contains the files written in ruby (the functions already in ruby)
+
+-----------------------------------------------------------------------------------------------------
+
+	RbConfig::CONFIG["archdir"]
+
+Usually located one down from rubylibdir and contains architechture specific files, rbconfig is located here.
+
+-----------------------------------------------------------------------------------------------------
+
+	RbConfig::CONFIG["sitedir"]/ Config::CONFIG["vendordir"]
+
+site_ruby is a subdirectory for 3rd party function, can be written by the user or downloaded, vendor is the same thing which came in ruby version 1.9. 3rd party files will go to one or the other.
+
+-----------------------------------------------------------------------------------------------------
+
+Gems
+
+You cannot find installed gems using RbConfig but it should have a folder in the same level as ruby_site. More info 1.4 apparently.
+
+-----------------------------------------------------------------------------------------------------
