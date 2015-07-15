@@ -1,0 +1,46 @@
+VARIABLES
+
+local variables are standard
+
+Instance variables start with @ and can store info amongst other def in a class
+
+Class variables start with @@ and "store information per class heirarchy" quoting the book
+
+Global variables start with $ and are as it says global (everywhere)
+
+---------------------------------------------------------------------------------------------
+
+The following converts the number x from binary to decimal base number (normal numbers)
+
+	x.to_i(2)
+
+You can replace 2 with any number as long as string x is a valid number of that baseline
+
+---------------------------------------------------------------------------------------------
+
+You can test for syntax errors and the like without running the ruby code using the following
+
+	ruby -cw x.rb
+
+x.rb is just a dummy ruby file.
+the -c says check syntax, -w to quote the book "activates a higher level of warning" as I call it "MAGIC"
+
+---------------------------------------------------------------------------------------------
+
+File
+
+y = File.read("x") will read file x and give y the value of what it reads
+
+f = File.new("x", "w") 			("w" means you are writing to the file)
+f.			(use f.puts or the like to add to new file "x")
+f.close
+
+f = File.open("x", "w")
+f.								(same as File.new but for existing file "x")	
+f.close
+
+
+
+
+
+
