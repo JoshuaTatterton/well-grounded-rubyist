@@ -1,0 +1,22 @@
+namespace :admin do 
+	desc "This is an example and does nothing"
+	task :example do 
+			# Insert task here (ruby code)
+		end
+	end
+
+	desc "Interactively delete files in /tmp"
+	task :clean_tmp do 
+		Dir["/tmp/*"].each do |f|
+			next unless File.file?(f)
+			print "Delete #{f}?"
+			answer = $stdin.gets
+			case answer
+			when /^y/
+				File.unlink(f)
+			when /^q/
+				break
+			end
+		end
+	end
+end

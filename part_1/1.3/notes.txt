@@ -4,6 +4,7 @@ the STANDARD LIBRARY is the extensions which come with ruby as standard. There a
 
 Using extensions and libraries need the "require" method and knowing its relation to "load" is also needed.
 Think of YAML from learn to program 12 i think of chris pine Learn to Program V2.
+
 -----------------------------------------------------------------------------------------------------
 
 Using the following will display the folders that LOAD and REQUIRE will search for files called upon
@@ -57,23 +58,3 @@ The file type ".rb" is not needed in require
 Full directory locations can be used in the same way as LOAD.
 
 -----------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

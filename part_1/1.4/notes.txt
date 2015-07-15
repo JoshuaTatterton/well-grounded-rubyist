@@ -1,0 +1,98 @@
+Out of the box ruby comes installed with some command line tools which are stored in the ruby bin directory. They are the following
+
+	erb, gem, irb, rake, rdoc, ri, ruby and testrb
+
+erb and testrb wont be covered so a brief explanation is as follows
+
+	erb - is a templating system (quoting the book)
+	testrb - is a high level tool for use with the ruby framework (quote again)
+
+-----------------------------------------------------------------------------------------------------
+ruby
+
+is the ruby interpreter command as used before it has the following common switches
+
+	-c check syntax of file without running program
+	-w give warning messages during program execution for things which are syntax-ly fine but weird
+	-e execute code provided in quotes on command line
+	-v shows ruby version and execute program in verbose mode
+	-l line mode, prints new line after every line of output
+	-r"x" short for require so x is the thing you require (quotation marks are not needed) 
+	--version shows ruby version information
+
+-----------------------------------------------------------------------------------------------------
+irb - interactive ruby interpreter
+
+you can use the following switch to make the output for irb shorter
+
+	--simple-prompt
+
+irb after that functions like working just from the main line in MATLAB (i.e not writing programs or functions)
+
+The following can be used to prevent irb from writing something unless asked by puts or print
+
+	--noecho
+
+-----------------------------------------------------------------------------------------------------
+ri - Ruby Index,	RDoc - Ruby Documentation
+
+Both ri and RDoc and closely related bein developed by the same person and can be accessed from the command line or from within ruby programs
+
+Ruby index can be used on the command line as follows
+
+	ri
+
+Ruby Documentation can also be used on the command line in the following ways
+
+	rdoc. ri
+	rdoc
+
+rdoc can scan your programs for comments and puts them in a readable format
+
+ri is used in a similar way for rdoc except it is used to scan ruby source files for comments/ information
+
+-----------------------------------------------------------------------------------------------------
+rake 
+
+Name comes from "Ruby Make" and is a task management utility, create a file called Rakefile and insert code as seen in example Rakefile. this is then called on the command line using the following
+
+	rake user:example
+
+Where user would most likely be admin or whatever name is used in the rakefile.
+
+The following is the format for a fake file
+	
+	namespace :user do 
+		desc "This is an example and does nothing"
+		task :example do 
+				# Insert code
+			end
+		end
+	end
+
+The "namespace" is the name used to call the task (see the command line call), "desc" is the description of the rake, "example" is the name the rake takes and you insert the code to make the rake do what you want.
+
+The following displays the information about the different tasks within the rake file
+
+	rake --tasks
+
+This displays the syntax to call the tasks and shows the description
+
+-----------------------------------------------------------------------------------------------------
+gem
+
+Gem aids in the easy install and management of 3rd party ruby packages.
+
+To install simply use the following command to install package x
+
+	gem install x
+
+It will visit http://www.rubyforge.org to download the gem files to a subdirectory in the gem directory.
+
+Use require to activate the gem (start using it)
+
+	gem "x", "< 1.8.2"
+
+This will search for the gem x of a lower version than 1.8.2 
+
+You can do this because updating a gem doesn't delete the older version it just swaps to use the newer version.

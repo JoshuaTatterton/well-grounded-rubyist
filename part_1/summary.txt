@@ -1,0 +1,7 @@
+1.1 - Basic ruby writing 
+
+1.2 - irb and config ruby installation
+
+1.3 - ruby extensions, LOAD REQUIRE
+
+1.4 - ruby command line tools
