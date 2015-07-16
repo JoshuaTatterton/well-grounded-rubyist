@@ -1,0 +1,64 @@
+
+Objects
+
+------------------------------------------------------------------------------------------------------
+
+Objects are what ruby uses to perform actions on as it uses Object Orientated Programing (OOP)
+
+You can assign an object to a variable as such
+
+	obj = Object.new
+
+The "Object" is generic and the ".new" allows the creation of a new objects seperate from any other objects and is the assigned to "obj" (this can be any name) for use later.
+
+------------------------------------------------------------------------------------------------------
+
+You then can create a method for the object "obj" using the following example
+
+	def obj.talk
+		puts "I am an object"
+		puts "(Do you object?)"
+	end
+
+"def" tells ruby you want to define a method, "obj" tells the method what object it is to used with, "talk" is the name of the method and is used to call the method, then the various lines inside are just instructions on what the method is to do.
+
+So now inserting obj.talk into your code after this definition will cause the following to be written
+
+	I am an object
+	(Do you object?)
+
+"." is the dot operator and in general it tells the method on the right to be performed on the object on the left the object is normally represented as a variable but can be a literal object e.g. 3, "abc"
+
+------------------------------------------------------------------------------------------------------
+
+Methods are like maths functions as you send an input through the method and out pops the answer.
+
+You can add "arguments" to methods, which is to add parameters to the method so that when executing the method it takes an extra value to change the output. See the example below for the celsius to fahrenheit converter in CH 1.1
+
+	def obj.c2f(c)
+		c * 9.0 / 5 + 32
+	end
+
+Using 9.0 causes the output to be a float instead of an integer (floats are decimals integers are whole numbers only). This method is now called using the following using 100˚C as the tempurature we want converted
+
+	puts obj.c2f(100)
+
+Will give the output 212.0.
+
+The brackets are not always needed so you could use "def obj.c2f c" then call it with "puts obj.c2f 100" for the same output but sometimes the parentheses are not an optional extra they are needed, so its standard to use them more often than not. 
+
+------------------------------------------------------------------------------------------------------
+
+There ae various expressions ruby uses to perform actions examples below
+
+	2 + 2 				=		4					|
+	"Hello"				=		"Hello"				|
+	"Hello" + "there"	=		"Hello there"		| 		Strings can be added like numbers
+	c = 100 			= 		100 				|
+	c * 9/5 + 32		=		212					|		BODMAS / BIDMAS applies to sums
+	obj.c2f(100)		= 		212					|		Calling methods count as expressions
+
+The output from each of these expressions is the result of a "returns value", and are for the most part self explanitory.
+
+The returns variable from the method though is up for debate. It will default to the last expresion evaluated within the method. Or you can use "return" to return the value after it and then exit from the definition. Return can also be used when you want multiple values outputted from a definition e.g. return a,b,c 
+
