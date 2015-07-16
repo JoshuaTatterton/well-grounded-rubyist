@@ -1,0 +1,124 @@
+
+Local variables and variable assignment
+
+-----------------------------------------------------------------------------------------------------
+
+Local variables start with lowercase letters or an underscore, then can use and combination of alphanumberic characters afterwards. It is standard to use underscores to seperate words rather than using camelCase names where there are caps at the begining of words.
+
+-----------------------------------------------------------------------------------------------------
+
+local variables are named that because of their "scope" or how wide spread they can be used see the following example
+
+	def say_goodbye
+		x = "Goodbye"
+		puts x
+	end
+	def start_here
+		x = "Hello"
+		puts x
+		say_goodbye
+		puts x	# To check what x is at the end
+	end
+
+Now running start_here will in itself run say_goodbye within it, the final "puts x" is to test what x is at the end of the method
+
+	start_here
+	=> Hello
+	=> Goodbye
+	=> Hello
+
+The value of x at the end is Hello even though x was last defined as "Goodbye" because x was only defined as "Goodbye" within the method say_goodbye. So when we come out of that method and back into start_here we swap back to the old variable values. Another way to look at with a similar example is is as follows 
+
+	def say_goodbye
+		puts x
+	end
+	def start_here
+		x = "Hello"
+		puts x
+		say_goodbye
+	end
+
+In this example removing assigning the value of x = "Goodbye" from say_goodbye and the last uneeded puts from start_here. you would think that the value x = "Hello" would carry on but it would produce the following result
+
+	start_here
+	=> Hello
+	=> ERROR BZZP,.,BEEP>BOoP/.BEEP
+
+This demonstrates what is happening clearer. While x has been defined within start_here it hasn't within say_goodbye so there is nothing for puts to print hence my very funny error message. The local variable means that it ony has that value within the current method << i could have just said that and skipped all those notes. I feel foolish
+
+-----------------------------------------------------------------------------------------------------
+
+Variables, objects and references
+
+-----------------------------------------------------------------------------------------------------
+
+You assign objects to variabels using "=", this is standard and obvious. You also can assign variables to variables like the following
+
+	x = "hello"
+	y = x
+	puts y
+	=> hello
+
+This is again quite obvious but what happens may not be as obvious. After assigning y = x, y does not equal what is in x is is instead assigned to x itself. This means that the following is possible
+
+	x = "hello"
+	y = x
+	x.replace("goodbye")
+	puts x
+	puts y
+	=> goodbye
+	=> goodbye
+
+using .replace to change the value of x, since y is linked to the value of x whatever it is. But doing the following produces different results
+
+	x = "hello"
+	y = x
+	x = "goodbye"
+	puts x
+	puts y
+	=> goodbye
+	=> hello
+
+In this example y functions the same way and is linked to what the original x was linked to. The key word is original when defining using x = "goodbye" ruby is starting over and creating a new x which is not the x, y was linked to so y keeps its value of "hello"
+
+-----------------------------------------------------------------------------------------------------
+
+You can stop .replace from altering variables if you want using any of the following 
+
+	s.freeze
+	method_which_changes_s(s)
+	=> Runtime error: can't change a frozen string
+
+.freeze stops any changes being made to s but produces an error you could also do the following
+
+	s
+	method_which_changes_s(s.dup)
+
+The .dup sends a duplicate of s into the method so s itself never gets changed you can use both .freeze and .dup in tandem because when you duplicate a frozen object the duplicate is not frozen itself. The other is .clone which works the same way .dup except when cloning a frozen object the clone is also frozen.
+
+one other thing to be careful of is when freezing arrays, just because you freeze the array it doesn't mean the values in the array are frozen. If you were to try recreate a part of the array like the following
+
+	x = ["one", "two", "three"]
+	x.freeze
+	x[2] = "four"
+	=> error cannot change frozen item
+
+this is because strictly speakingyou are trying to change the array by destroying and recreating x[2] but if you do the following
+
+	x = ["one", "two", "three"]
+	x.freeze
+	x[2].replace("four")
+	puts x
+	=> ["one", "two", "four"]
+
+This is because .replace is not touching the array itself but instead changing the value itself. 
+
+Think of it as robbing a bank you either try the x[2]="four" method of breaking in through the front door and trying to get in by brute force and you are then caught and arrested. The x.replace("four") way of doing things is to teleport directly into the bank vault, take what you want and teleport out where the bank doesn't realise it's been broken into at all.
+
+-----------------------------------------------------------------------------------------------------
+
+At the top I put a description of what a local variable can look like (start with lowercase or underscore) but ruby sees these "words" as one of 3 things
+
+	1 - a keyword - This is a keyword which ruby uses dirrerently to most other things it is not a good idea to name a variable/method after these keywords (e.g. puts, print, if, def)
+	2 - a local variable - it will identify as a local variable if there is an "=" to show something is being assigned
+	3 - a method call - it will identify anything other than the above as a method call

@@ -5,3 +5,17 @@
 1.3 - ruby extensions, LOAD REQUIRE
 
 1.4 - ruby command line tools
+
+2.1 - object creation and basic method creation
+
+2.2 - more on method creation, basic boolean logic
+
+2.3 - Natural object methods
+
+2.4 - Multi arguement methods
+
+2.5 - Arguement no nos
+
+2.6 - Local variables and variable assignment
+
+------------------------------------------------------------------------------------------------------

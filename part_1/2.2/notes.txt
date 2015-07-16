@@ -1,0 +1,42 @@
+
+Ticket
+
+------------------------------------------------------------------------------------------------------
+
+Beware using floats because they are stored differently you could end up with the following example
+
+	puts 0.5 - 0.4 - 0.1
+	-2.77555756156289e-17		<- NOT ZERO as it should be
+
+This is bacause the are stored/calculated in binary for "complete accuracy", just look for rounding options if this happens. See bellow
+	
+	example = 2.501
+	puts "Price: £#{"%.2f." % example}"
+
+Will give the following more desirable output to 2 decimal places
+
+	Price: £2.50
+
+------------------------------------------------------------------------------------------------------
+
+You already know but use #{example} to insert variables into puts/print
+
+------------------------------------------------------------------------------------------------------
+
+When creating a method which is going to return either truth of false is is customary to end it with "?", to show is this going to happen.
+
+------------------------------------------------------------------------------------------------------
+Boolean
+
+Boolean is the language of being true or false, in some cases (not in ruby) it is represented as 1's and 0's of binary if you want to think of it that way.
+
+False
+
+The only "Falsey" objects in ruby are "false" and "nil".
+
+Truthy
+
+All other objects/values are treated as "truthy", i.e are true.
+
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------

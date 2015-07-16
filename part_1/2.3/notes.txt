@@ -1,0 +1,69 @@
+
+Natural Methods
+
+When an object is created there are already some methods which can be used with them as soon as it is created. You can view these using the following command
+
+	p Object.new.methods.sort
+
+Where "p" is a variant on puts/print, and produces the following output
+
+:!, :!=, :!~, :<=>, :==, :===, :=~, :__id__, :__send__, :class, :clone, :define_singleton_method, :display, :dup, :enum_for, :eql?, :equal?, :extend, :freeze, :frozen?, :hash, :inspect, :instance_eval, :instance_exec, :instance_of?, :instance_variable_defined?, :instance_variable_get, :instance_variable_set, :instance_variables, :is_a?, :kind_of?, :method, :methods, :nil?, :object_id, :private_methods, :protected_methods, :public_method, :public_methods, :public_send, :remove_instance_variable, :respond_to?, :send, :singleton_class, :singleton_method, :singleton_methods, :taint, :tainted?, :tap, :to_enum, :to_s, :trust, :untaint, :untrust, :untrusted?
+
+Out of these most are not needed for the moment except the following 3 
+
+------------------------------------------------------------------------------------------------------
+
+object_id
+
+You use this on a variable for example obj and it will return the object it is attached to's ID number see example bellow.
+
+	obj = 5
+	obj.object_id
+	=> 11
+
+So if you ever had another object example obj_2 and had set it to "obj_2 = 5" that would also have the same object id, another example would be 
+
+	obj = "Hello"
+	obj.object_id
+	=> 70217301120540
+
+So each object has its own object id to distinct it from anything different, the rule where numbers always have the same object id does not extend to strings as while they might have the same characters they are not necessarily the same object.
+
+A way to look at is to look at it as if you have the number five, you have 5 of something be it a book/ biscuit or broom you still have 5 and the item doesn't change the 5. Think of a string as a book some one else may have the same book but they are instead two seperate books with the same contents.
+
+------------------------------------------------------------------------------------------------------
+
+respond_to?
+
+This takes in an arguement and tests whether the object has a usable method applying to it using the following syntax
+
+	obj.respond_to(method)
+	=> true/false
+
+I tests object "obj" for method "method" and returns either true or false
+
+This would have been useful in the interactive baby dragon exersize of chris pines learn to program, where i kept a list in an array of all the methods/ interactions you caould have had with the dragon and every time the user wanted to do something I checked each value in my array whereas this method would allow me to test in an "if" function much easier.
+
+------------------------------------------------------------------------------------------------------
+
+send
+
+Send is an intermediary for what method you want to use. this allows the method to be a variable see the example below
+
+	u_method = gets.chomp
+	obj.send(u_method)
+
+Using this it allows the mothod to be interactive and combined with the respond_to? method seen above you can check that an error wont be cause when running a user inputted method see example below
+
+	u_method = gets.chomp
+	if obj.respond_to(u_method)
+		obj.send(u_method)
+	else
+		puts "#{u_method} is not a valid method please try another"
+	end
+
+This allows user methods to be checked before aplication so invalid methods don't cause method errors.
+
+An alternative is __send__, which is send with 2 underscores on both sides does the same thing that send does but somtimes a programmer may create a method called send which would overwrite the ruby version so this is also used incase that happens.
+
+Another useful variant is public_send, which works the same way normal send works but any methods defined as private cannot be used again looking at the baby dragon example the method passage_of_time method was designated as private, as it was a feature employed in other methods and not to be called by the user.

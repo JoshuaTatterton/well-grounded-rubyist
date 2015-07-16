@@ -1,0 +1,46 @@
+
+As seen in previous chapters methods have arguments, but we only had one parameter in previous examples like the following
+
+	def obj.method(x)
+
+This allows us to have exactly 1 argument, no more no less. The following is what it would look like to have more than one
+
+	def obj.method(x,y,z)
+
+This allows for multiple arguments but there has to be that amount of arguments used i.e. in this example there must be exactly 3 arguments used. 
+
+------------------------------------------------------------------------------------------------------
+
+But you can use an umlimited amount of arguments using the following
+
+	def obj.method(*x)
+
+The star ("*") stands for "some number of" so the method will take some number of values and assign them to x
+
+------------------------------------------------------------------------------------------------------
+
+Default Arguments
+
+You can set a default argument for the method so that if no value is supplied when running the method the method can still run example below
+
+	def method (a,b,c=1)
+	end
+
+This method still needs the first two parameters but the third can be left blank and it will default to 1, if a 3rd parameter is supplied it will overwrite the default as it should.
+
+------------------------------------------------------------------------------------------------------
+
+Argument Order
+
+When using a mixture of needed, default and multi args the order of them can matter. The needed args are distributed first then the rest are distributed working from left to right. for example see below
+
+	def method(a,b=1,*c,d)
+	method(1,2)
+	=> a=1, b=1, c=[], d=2
+	method(1,2,3)
+	=> a=1, b=2, c=[], d=3
+	method(1,2,3,4,5)
+	=> a=1, b=2, c=[3,4], d=5
+
+So looking at this both a & d have priority over the other parameters then the rest take them as they go.
+

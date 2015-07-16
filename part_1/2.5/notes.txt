@@ -1,0 +1,8 @@
+
+What you can't do in argument lists
+
+You cannot do the following arguement order
+
+	def method(a,*c,b=1,d)
+
+Because default and multi args have the same priority, default args must always be on the left of multi args. This is because as they fill up from the left and multi can take an unlimited amount of arguments then if the default is on the right it would never get a variable.
